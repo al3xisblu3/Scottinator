@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eee8d9">
+  <meta name="description" content="Think of a song by The Strokes. Scott will take it from here. A music guessing game for MEJO 187.">
+  <title>Scottinator — The Strokes guessing booth</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="songs-data.js"></script>
+  <script defer src="game-engine.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="masthead">
+      <a class="wordmark" href="index.html" aria-label="Scottinator home">S<span class="wordmark-star">✳</span></a>
+      <span class="edition">A MEJO 187 ORIGINAL</span>
+      <span class="booth-label"><span class="live-dot"></span> THE GUESSING BOOTH</span>
+    </header>
+
+    <main>
+      <div class="title-row">
+        <div>
+          <p class="eyebrow">YOUR SONG. HIS SIXTH SENSE.</p>
+          <h1>SCOTTINATOR<span class="title-period">.</span></h1>
+        </div>
+        <div class="edition-stamp" aria-hidden="true">THE STROKES<br><strong>EDITION</strong><span id="edition-count">THE FULL SETLIST</span></div>
+      </div>
+
+      <section class="booth" aria-label="The guessing booth">
+        <div class="scott-stage">
+          <div class="stage-grid" aria-hidden="true"></div>
+          <div class="halo" aria-hidden="true"></div>
+          <span class="stage-number" aria-hidden="true">01 / SCOTT</span>
+          <span class="stage-spark" aria-hidden="true">✳</span>
+          <img id="scott" class="scott-sprite" src="assets/scott.png" alt="Scott, ready to guess your song" width="1254" height="1241" fetchpriority="high">
+          <div class="scott-name"><span class="live-dot"></span> SCOTT IS LISTENING</div>
+        </div>
+
+        <div class="interaction">
+          <div class="round-topline"><span id="round-label">SIDE A · THE SETUP</span><div class="round-actions"><button id="undo" class="text-button" type="button" hidden>↶ Undo answer</button><button id="reset" class="text-button" type="button" hidden>Start over ↗</button></div></div>
+          <div id="speech" class="speech-bubble" aria-live="polite" aria-atomic="true">
+            <p id="speech-kicker" class="eyebrow">HEY, I'M SCOTT.</p>
+            <h2 id="prompt" tabindex="-1">You think of a song.<br>I’ll read the room.</h2>
+            <p id="hint">Pick a song by <strong>The Strokes</strong> from the list below. Keep it to yourself. I’ll ask the questions.</p>
+            <p id="song-meta" class="song-meta" hidden></p>
+          </div>
+          <div id="start-controls">
+            <button id="start" class="primary-button" type="button">Start <span aria-hidden="true">↗</span></button>
+            <p id="start-note" class="control-note">The full setlist. Three answers. One mind reader.</p>
+          </div>
+          <div id="answer-controls" hidden>
+            <div class="answers" aria-label="Answer Scott">
+              <button type="button" data-answer="yes">Yes <span aria-hidden="true">↗</span></button>
+              <button type="button" data-answer="no">No <span aria-hidden="true">↘</span></button>
+              <button type="button" data-answer="unknown">I don’t know <span aria-hidden="true">—</span></button>
+            </div>
+            <p id="answer-note" class="control-note">Not sure? “I don’t know” skips the question and keeps your song in the mix.</p>
+          </div>
+          <div id="end-controls" hidden><button id="again" class="primary-button" type="button">Play again <span aria-hidden="true">↻</span></button></div>
+          <div class="booth-bottom"><span id="status">READY WHEN YOU ARE</span><span class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+        </div>
+      </section>
+
+      <details id="catalog" class="catalog">
+        <summary><span><span class="small-star" aria-hidden="true">✳</span> Which songs can I pick?</span><span class="catalog-count"><span id="catalog-total">FULL SETLIST</span> <span class="expand-icon" aria-hidden="true">+</span></span></summary>
+        <div class="catalog-inner">
+          <p class="catalog-intro">Browse freely—looking or searching here doesn’t tell Scott a thing. Pick a song title; alternate takes, live versions and remixes share that song’s choice. Includes all seven studio albums, EP songs, B-sides, bonus tracks and released covers. Unreleased demos and solo projects aren’t in this setlist.</p>
+          <p class="catalog-intro">Numbers below are positions on each album or EP, not a running setlist number. “Bonus 12” marks the Japanese bonus track; a dash means a non-album release. Unsure about a clue? Choose “I don’t know,” or use “Undo answer” to correct it.</p>
+          <label class="catalog-search-label" for="catalog-search">Find a song or release</label>
+          <input id="catalog-search" type="search" placeholder="Try Someday, Angles, or Hawaii…" autocomplete="off">
+          <p id="catalog-empty" class="catalog-intro" role="status" hidden>No matching songs. Try another title or release.</p>
+          <div id="song-list" class="song-list"></div>
+        </div>
+      </details>
+
+      <section class="how-to" aria-label="How to play">
+        <p><span>01</span> Think of a track.</p><p><span>02</span> Answer Scott’s questions.</p><p><span>03</span> See if he gets it.</p>
+      </section>
+      <noscript><p class="noscript">Turn on JavaScript in your browser to play Scottinator.</p></noscript>
+    </main>
+    <footer><span>MADE FOR MEJO 187</span><span>A LITTLE ROCK ’N’ ROLL. A LITTLE MIND READING.</span><span>SCOTTINATOR © 2026</span></footer>
+  </div>
+</body>
+</html>
